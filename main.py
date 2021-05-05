@@ -4,7 +4,6 @@ from pynput.keyboard import KeyCode, Key
 
 # variables
 saved_volume = 10
-preferred_device_id = '3c331613a26f366446dd2bb9297a8b4104e340d5'
 
 
 # utility functions
@@ -72,7 +71,6 @@ def on_press_try(k):
     elif k == char('*'):  # *: restore volume after mute
         spotify.volume(volume_percent=saved_volume)
     elif k == char('/'):
-        spotify.start_playback(device_id=preferred_device_id)
         spotify.volume(volume_percent=10)
     elif k == char('0'):  # 0: disable shuffle
         spotify.shuffle(state=False)
