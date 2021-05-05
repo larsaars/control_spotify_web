@@ -22,6 +22,7 @@ ENTER | play / pause
 \- | volume --
 DEL | mute
 \* | restore volume after muting
+/ | set volume to 10 and ensure preferred device is being used
 0 | disable shuffle
 1 | enable shuffle
 SPACE | disable repeat

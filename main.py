@@ -4,6 +4,7 @@ from pynput.keyboard import KeyCode, Key
 
 # variables
 saved_volume = 10
+preferred_device_id = '3c331613a26f366446dd2bb9297a8b4104e340d5'
 
 
 # utility functions
@@ -19,8 +20,17 @@ def char(key_code: str):
     return KeyCode.from_char(key_code)
 
 
-# actions on key presses
+# this is called when a button is pressed;
+# wrap in try catch to never exit the program accidentally
 def on_press(k):
+    try:
+        on_press_try(k)
+    except:
+        pass
+
+
+# actions on key presses
+def on_press_try(k):
     global saved_volume
 
     if k == char('q'):  # q: quit process
@@ -61,6 +71,9 @@ def on_press(k):
         spotify.volume(volume_percent=0)
     elif k == char('*'):  # *: restore volume after mute
         spotify.volume(volume_percent=saved_volume)
+    elif k == char('/'):
+        spotify.start_playback(device_id=preferred_device_id)
+        spotify.volume(volume_percent=10)
     elif k == char('0'):  # 0: disable shuffle
         spotify.shuffle(state=False)
     elif k == char('1'):  # 1: enable shuffle
