@@ -1,78 +1,83 @@
 from login_spotify import spotify
-from msvcrt import getch
+from pynput.keyboard import Listener as KeyboardListener
+from pynput.keyboard import KeyCode, Key
 
 # variables
 saved_volume = 10
 
 
-# functions
-# current volume
+# utility functions
 def cur_volume() -> int:
     return int(spotify.current_playback()['device']['volume_percent'])
 
 
-def cur_ms():
+def cur_ms() -> int:
     return int(spotify.current_playback()['progress_ms'])
 
 
-# forever loop
-while True:
-    # get the key
-    key = ord(getch())
-    print(key)
+def char(key_code: str):
+    return KeyCode.from_char(key_code)
 
-    # on key execute specific actions
-    if key == 113:  # q: quit process
-        break
-    elif key == 13:  # enter: play / pause
+
+# actions on key presses
+def on_press(k):
+    global saved_volume
+
+    if k == char('q'):  # q: quit process
+        keyboard_listener.stop()
+    elif k == Key.enter:
+        print('enter')
+    elif k == Key.enter:  # enter: play / pause
         if spotify.current_playback()['is_playing']:
             spotify.pause_playback()
         else:
             spotify.start_playback()
-    elif key == 54:  # 6: next song
+    elif k == char('6'):  # 6: next song
         spotify.next_track()
-    elif key == 52:  # 4: last song
+    elif k == char('4'):  # 4: last song
         spotify.previous_track()
-    elif key == 43:  # +: volume ++
+    elif k == char('+'):  # +: volume ++
         # get current volume and the new
         vol = cur_volume()
         vol_new = vol + 2
         # if volume is already at max, do nothing
         if vol == 100:
-            continue
+            return
 
         #  if new volume is over 100, set vol_new to max
         spotify.volume(volume_percent=min(vol_new, 100))
-    elif key == 45:  # -: volume --
+    elif k == char('-'):  # -: volume --
         # get current volume and the new
         vol = cur_volume()
         vol_new = vol - 2
         # if volume is already at min, do nothing
         if vol == 0:
-            continue
+            return
 
         # if new volume is under 0, set vol_new to min
         spotify.volume(volume_percent=max(vol_new, 0))
-    elif key == 8:  # DEL: mute
+    elif k == Key.backspace:  # DEL: mute
         # save volume for restoring
         saved_volume = cur_volume()
         # set vol to zero
         spotify.volume(volume_percent=0)
-    elif key == 42:  # *: restore volume after mute
+    elif k == char('*'):  # *: restore volume after mute
         spotify.volume(volume_percent=saved_volume)
-    elif key == 48:  # 0: disable shuffle
+    elif k == char('0'):  # 0: disable shuffle
         spotify.shuffle(state=False)
-    elif key == 49:  # 1: enable shuffle
+    elif k == char('1'):  # 1: enable shuffle
         spotify.shuffle(state=True)
-    elif key == 56:  # 8: seek song ++
+    elif k == char('8'):  # 8: seek song ++
         spotify.seek_track(position_ms=cur_ms() + 10000)
-    elif key == 50:  # 2: seek song --
+    elif k == char('2'):  # 2: seek song --
         spotify.seek_track(position_ms=max(0, cur_ms() - 10000))
-    elif key == 32:  # SPACE: repeat track off
+    elif k == Key.space:  # SPACE: repeat track off
         spotify.repeat(state='off')
-    elif key == 46:  # .: repeat track on
+    elif k == char('.'):  # .: repeat track on
         spotify.repeat(state='track')
-    elif key == 224:  # Special keys (arrows, f keys, ins, del, etc.)
-        # so has to get next ch to know what has been the special action
-        key = ord(getch())
-        print(key)
+
+
+keyboard_listener = KeyboardListener(on_press=on_press)
+# start listening and join thread
+keyboard_listener.start()
+keyboard_listener.join()
