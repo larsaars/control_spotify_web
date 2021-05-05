@@ -18,4 +18,4 @@ os.environ['SPOTIPY_REDIRECT_URI'] = 'http://localhost:8888/callback'
 scope = 'user-read-currently-playing user-modify-playback-state user-read-playback-state'
 
 # login
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
+spotify = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))

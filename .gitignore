@@ -1,1 +1,4 @@
 spotify_secrets.txt
+/venv/
+/.idea/
+.cache
