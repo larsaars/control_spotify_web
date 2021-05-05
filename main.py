@@ -25,8 +25,6 @@ def on_press(k):
 
     if k == char('q'):  # q: quit process
         keyboard_listener.stop()
-    elif k == Key.enter:
-        print('enter')
     elif k == Key.enter:  # enter: play / pause
         if spotify.current_playback()['is_playing']:
             spotify.pause_playback()
