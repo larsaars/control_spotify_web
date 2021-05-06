@@ -52,7 +52,7 @@ def on_press_try(k):
             return
 
         #  if new volume is over 100, set vol_new to max
-        spotify.volume(volume_percent=min(vol_new, 100))
+        spotify.volume(volume_percent=min(vol_new, 100   ))
     elif k == char('-'):  # -: volume --
         # get current volume and the new
         vol = cur_volume()
