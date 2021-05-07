@@ -24,7 +24,7 @@ BACKSPACE | set volume to preferred volume
 0 | disable shuffle
 1 | enable shuffle
 SPACE | disable repeat
-. | enable repeat track
+3 | enable repeat track
 \* | ensure preferred device is connected
 / | switch to start playlist mode
 
