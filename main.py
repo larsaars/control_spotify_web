@@ -186,7 +186,7 @@ def on_press_try(k):
         spotify.seek_track(position_ms=max(0, cur_ms() - 10000))
     elif k == Key.space:  # SPACE: repeat track off
         spotify.repeat(state='off')
-    elif k == char('3'):  # .: repeat track on
+    elif k == char(',') or k == char('.'):  # .: repeat track on
         spotify.repeat(state='track')
     elif k == char('/'):  # /: switch playlist from dictionary
         select_playlist = True
