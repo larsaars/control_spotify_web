@@ -1,3 +1,6 @@
+import os
+from time import sleep
+
 from config import *
 from login_spotify import spotify
 from pynput.keyboard import Listener as KeyboardListener
@@ -39,12 +42,18 @@ def on_press(k):
 
 # ensure PREFERRED_DEV_NAME is connected
 def ensure_device():
-    playback = spotify.current_playback()
-    if playback is not None:
-        spotify.pause_playback(device_id=playback['device']['id'])
+    # list number of devices
+    devices = spotify.devices()['devices']
+
+    # there are no active or inactive devices
+    # so restart raspotify service
+    if len(devices) == 0:
+        os.system('sudo systemctl restart raspotify.service')
+        # then wait some seconds
+        sleep(3)
 
     pref_dev = None
-    for device in spotify.devices()['devices']:
+    for device in devices:
         if device['name'] == PREFERRED_DEV_NAME:
             pref_dev = device['id']
             break
