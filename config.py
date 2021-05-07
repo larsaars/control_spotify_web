@@ -34,4 +34,5 @@ PLAYLIST_URLS = {
     '2': 'https://open.spotify.com/playlist/5coEobygUtc3VbOWZRCjtB',  # usw
     '3': 'https://open.spotify.com/playlist/2xwBNfyo360de2o2Mf4dmM',  # groovy tracks
     '0': 'https://open.spotify.com/playlist/37i9dQZEVXcMAZ3hwyicGi',  # Dein Mix der Woche
+    'Key.space': 'https://open.spotify.com/playlist/7Inx0D6rxoGeBTxuLjTzpI',  # session
 }
