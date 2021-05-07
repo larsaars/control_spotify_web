@@ -62,8 +62,7 @@ def start_favourites_playback(shuffle: bool):
             tracks_obj = spotify.current_user_saved_tracks(limit=20, offset=(i * 20))
             # loop through items list
             for track_item in tracks_obj['items']:
-                track_id = track_item['track']['id']
-                liked_songs.append('spotify:track:' + track_id)
+                liked_songs.append(track_item['track']['uri'])
 
         # shuffle list
         random.shuffle(liked_songs)
@@ -74,8 +73,7 @@ def start_favourites_playback(shuffle: bool):
         # just read out first 50 songs of fav list, prepare links
         # and play them
         for track_item in spotify.current_user_saved_tracks(limit=50)['items']:
-            track_id = track_item['track']['id']
-            liked_songs.append('spotify:track:' + track_id)
+            liked_songs.append(track_item['track']['uri'])
 
         # start playing liked songs
         spotify.start_playback(uris=liked_songs)
@@ -110,6 +108,13 @@ def play_album_current_track():
         spotify.start_playback(context_uri=playback['item']['album']['uri'])
 
 
+# play more by the artist of current track
+def play_artist_current_track():
+    playback = spotify.current_playback()
+    if playback is not None:
+        spotify.start_playback(context_uri=playback['item']['artists'][0]['uri'])
+
+
 # actions on key presses
 def on_press_try(k):
     global select_playlist
@@ -127,6 +132,8 @@ def on_press_try(k):
                 start_favourites_playback(True)
             elif playlist_url == 'album':
                 play_album_current_track()
+            elif playlist_url == 'artist':
+                play_artist_current_track()
             else:
                 spotify.start_playback(context_uri=playlist_url)
         return

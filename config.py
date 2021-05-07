@@ -21,6 +21,7 @@ PLAYLIST_URLS = {
     '/': 'favs_def',  # liked songs also, not shuffled (50 first songs)
     '*': 'favs_shuffle',  # favourite list, shuffled (50 random songs)
     '+': 'album',  # play album of current track playing
+    '-': 'artist',  # play more from artist of current playback
     # other playlists here
     # these are just my private ones
     '7': 'https://open.spotify.com/playlist/7oRDKW0qLCCTL4kdB9IyAH',  # damn this is good

@@ -36,6 +36,7 @@ shortcut | behaviour
 / | play first songs from liked songs (max. 50 songs[^1])
 \* | shuffle liked songs (max. 50 songs[^1])
 \+ | play the album of current song
+\- | play more of the artist of current song
 OTHER | all other keys are defined in config.py file and can be set to other playlists, albums, tracks etc.
 
 
