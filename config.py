@@ -33,6 +33,9 @@ PLAYLIST_URLS = {
     '1': 'https://open.spotify.com/playlist/022hSssDIUrggKAI27F7ms',  # Party mit Mia und Lars
     '2': 'https://open.spotify.com/playlist/5coEobygUtc3VbOWZRCjtB',  # usw
     '3': 'https://open.spotify.com/playlist/2xwBNfyo360de2o2Mf4dmM',  # groovy tracks
-    '0': 'https://open.spotify.com/playlist/37i9dQZEVXcMAZ3hwyicGi',  # Dein Mix der Woche
-    'Key.space': 'https://open.spotify.com/playlist/7Inx0D6rxoGeBTxuLjTzpI',  # session
+    '0': 'https://open.spotify.com/playlist/7Inx0D6rxoGeBTxuLjTzpI',  # session
+    'Key.space': 'https://open.spotify.com/playlist/37i9dQZEVXcMAZ3hwyicGi',  # Dein Mix der Woche
+    ',': 'https://open.spotify.com/playlist/37i9dQZF1Epm7edhYFruiz',  # On Repeat
+    'Key.enter': 'https://open.spotify.com/playlist/37i9dQZF1EfLWEaldb43et',  # Daily Drive
+    'Key.backspace': 'https://open.spotify.com/playlist/37i9dQZF1EnOBYmteT8p3O',  # Daily Podcasts
 }
