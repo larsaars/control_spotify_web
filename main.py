@@ -73,7 +73,6 @@ def on_press_try(k):
         playlist_url = PLAYLIST_URLS.get(str(k).strip('\''), 'none')
         # if this is a valid key in the dict, play the playlist
         if playlist_url != 'none':
-            spotify.pause_playback()
             spotify.start_playback(context_uri=playlist_url)
         return
 

@@ -2,6 +2,7 @@ import os
 
 import spotipy
 from spotipy import SpotifyOAuth
+from config import PERMISSION_SCOPE
 
 # read the credentials
 with open('spotify_secrets.txt', 'r') as file:
@@ -14,8 +15,5 @@ os.environ['SPOTIPY_CLIENT_ID'] = client_id
 os.environ['SPOTIPY_CLIENT_SECRET'] = client_secret
 os.environ['SPOTIPY_REDIRECT_URI'] = 'http://localhost:8888/callback'
 
-# the permission scope needed
-scope = 'user-read-currently-playing user-modify-playback-state user-read-playback-state'
-
 # login
-spotify = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
+spotify = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=PERMISSION_SCOPE))
