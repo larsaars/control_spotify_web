@@ -20,10 +20,21 @@ ENTER | play / pause
 2 | seek song -10s
 \+ | volume ++
 \- | volume --
-DEL | mute
-\* | restore volume after muting
-/ | set volume to 10
+BACKSPACE | set volume to preferred volume
 0 | disable shuffle
 1 | enable shuffle
 SPACE | disable repeat
 . | enable repeat track
+\* | ensure preferred device is connected
+/ | switch to start playlist mode
+
+## switch playlist mode shortcuts
+After pressing `/` and pressing one of the buttons in the table has the defined behaviour.
+
+shortcut | behaviour
+--- | ---
+1 | play first songs from liked songs (max. 50 songs[^1])
+2 | shuffle liked songs (max. 50 songs[^1])
+
+
+[^1]: 50 songs are the limit in since the liked songs list is not treated as a playlist by Spotify, and the API can only receive 50 song uris.

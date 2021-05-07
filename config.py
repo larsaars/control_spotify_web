@@ -20,6 +20,7 @@ or the format of a spotify url: ex.: "spotify:playlist:PLAYLIST_ID"
 PLAYLIST_URLS = {
     '1': 'favs_def',  # liked songs also, not shuffled (50 first songs)
     '2': 'favs_shuffle',  # favourite list, shuffled (50 random songs)
+    '3': 'album',  # play album of current track playing
     # other playlists here
-    '3': 'https://open.spotify.com/playlist/022hSssDIUrggKAI27F7ms'
+    '4': 'https://open.spotify.com/playlist/022hSssDIUrggKAI27F7ms'
 }

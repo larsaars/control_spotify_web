@@ -55,7 +55,7 @@ def start_favourites_playback(shuffle: bool):
         # read out liked songs
 
         # get number of liked songs
-        num_of_favs = int(spotify.current_user_saved_tracks(limit=1)['total']) + 1
+        num_of_favs = int(spotify.current_user_saved_tracks(limit=1)['total'])
         # with offset of 20, run this many times
         # loop through them and get offset
         for i in range(ceildiv(num_of_favs, 20)):
@@ -81,7 +81,7 @@ def start_favourites_playback(shuffle: bool):
         spotify.start_playback(uris=liked_songs)
 
 
-# ensure PREFERRED_DEV_NAME is connected
+# ensure PREFERRED_DEV_NAME is connected and playing
 def ensure_device():
     # list number of devices
     devices = spotify.devices()['devices']
@@ -103,6 +103,13 @@ def ensure_device():
         spotify.transfer_playback(device_id=pref_dev, force_play=True)
 
 
+# play album of currently playing song
+def play_album_current_track():
+    playback = spotify.current_playback()
+    if playback is not None:
+        spotify.start_playback(context_uri=playback['item']['album']['uri'])
+
+
 # actions on key presses
 def on_press_try(k):
     global select_playlist
@@ -118,6 +125,8 @@ def on_press_try(k):
                 start_favourites_playback(False)
             elif playlist_url == 'favs_shuffle':
                 start_favourites_playback(True)
+            elif playlist_url == 'album':
+                play_album_current_track()
             else:
                 spotify.start_playback(context_uri=playlist_url)
         return
@@ -155,7 +164,7 @@ def on_press_try(k):
         spotify.volume(volume_percent=max(vol_new, 0))
     elif k == Key.backspace:  # DEL: set volume to PREFERRED_VOLUME
         spotify.volume(volume_percent=PREFERRED_VOLUME)
-    elif k == char('*'):  # *: ensure device
+    elif k == char('*'):  # *: ensure preferred device is connected and playing
         ensure_device()
     elif k == char('0'):  # 0: disable shuffle
         spotify.shuffle(state=False)
