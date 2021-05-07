@@ -33,8 +33,10 @@ After pressing `/` and pressing one of the buttons in the table has the defined 
 
 shortcut | behaviour
 --- | ---
-1 | play first songs from liked songs (max. 50 songs[^1])
-2 | shuffle liked songs (max. 50 songs[^1])
+/ | play first songs from liked songs (max. 50 songs[^1])
+\* | shuffle liked songs (max. 50 songs[^1])
+\+ | play the album of current song
+OTHER | all other keys are defined in config.py file and can be set to other playlists, albums, tracks etc.
 
 
 [^1]: 50 songs are the limit in since the liked songs list is not treated as a playlist by Spotify, and the API can only receive 50 song uris.
