@@ -126,6 +126,7 @@ def on_press_try(k):
         playlist_url = PLAYLIST_URLS.get(str(k).strip('\''), 'none')
         # if this is a valid key in the dict, play the playlist
         if playlist_url != 'none':
+            print('starting playlist', playlist_url)
             if playlist_url == 'favs_def':
                 start_favourites_playback(False)
             elif playlist_url == 'favs_shuffle':
@@ -184,6 +185,7 @@ def on_press_try(k):
     elif k == Key.space:  # SPACE: repeat track off
         spotify.repeat(state='off')
     elif k == char('.'):  # .: repeat track on
+        print('repeat track on')
         spotify.repeat(state='track')
     elif k == char('/'):  # /: switch playlist from dictionary
         select_playlist = True
