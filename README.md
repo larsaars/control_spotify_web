@@ -1,5 +1,5 @@
 # control spotify web rpi
-Control spotify playback via web api and by receiving specific key strokes from keyboard (using a raspberry pi).
+Control spotify playback via web api and by receiving specific key strokes from keyboard (using a raspberry pi, assuming usage of raspotify).
 
 ## install on linux
 * spotify secrets
