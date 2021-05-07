@@ -119,8 +119,7 @@ def play_artist_current_track():
 def on_press_try(k):
     global select_playlist
 
-    print()
-    print(k)
+    # print('\n', k)
 
     # if select playlist mode is true, listen to the next key
     if select_playlist:
