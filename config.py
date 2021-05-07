@@ -27,9 +27,10 @@ PLAYLIST_URLS = {
     '8': 'https://open.spotify.com/playlist/2xGIJmGOGjXjgNZvaDz5MI',  # favourites of favourites
     '9': 'https://open.spotify.com/playlist/3sOHkO8mkdH0jULLxYLrgL',  # once upon a time
     '4': 'https://open.spotify.com/playlist/25BINn4b9lSfdo3PdGa8pZ',  # beautiful
-    '5': '',  #
-    '6': '',  #
-    '1': '',  #
-    '2': '',  #
-    '3': '',  #
+    '5': 'https://open.spotify.com/playlist/7vRTWf5LdQoE9Kxe9JBL5O',  # trop calme
+    '6': 'https://open.spotify.com/playlist/5qpQ3ihZ2GgDhfjXVy4A1B',  # etc
+    '1': 'https://open.spotify.com/playlist/022hSssDIUrggKAI27F7ms',  # Party mit Mia und Lars
+    '2': 'https://open.spotify.com/playlist/0qJt1pMG8QDQAkQLcaedAz',  # PM
+    '3': 'https://open.spotify.com/playlist/2xwBNfyo360de2o2Mf4dmM',  # groovy tracks
+    '0': 'https://open.spotify.com/playlist/37i9dQZEVXcMAZ3hwyicGi',  # Dein Mix der Woche
 }
