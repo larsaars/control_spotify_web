@@ -3,6 +3,9 @@ from login_spotify import spotify
 from pynput.keyboard import Listener as KeyboardListener
 from pynput.keyboard import KeyCode, Key
 
+# variables
+select_playlist = False
+
 
 # utility functions
 def cur_volume() -> int:
@@ -34,7 +37,7 @@ def on_press(k):
         print(e)
 
 
-# ensure device
+# ensure PREFERRED_DEV_NAME is connected
 def ensure_device():
     playback = spotify.current_playback()
     if playback is not None:
@@ -48,11 +51,23 @@ def ensure_device():
 
     if pref_dev is not None:
         spotify.transfer_playback(device_id=pref_dev, force_play=True)
-        # spotify.start_playback()  # , context_uri='spotify:collection:tracks')
 
 
 # actions on key presses
 def on_press_try(k):
+    global select_playlist
+
+    # if select playlist mode is true, listen to the next key
+    if select_playlist:
+        select_playlist = False
+        # get the playlist from dict
+        playlist_url = PLAYLIST_URLS.get(str(k).strip('\''), 'none')
+        # if this is a valid key in the dict, play the playlist
+        if playlist_url != 'none':
+            spotify.pause_playback()
+            spotify.start_playback(context_uri=playlist_url)
+        return
+
     if k == char('q'):  # q: quit process
         keyboard_listener.stop()
     elif k == Key.enter:  # enter: play / pause
@@ -84,8 +99,8 @@ def on_press_try(k):
 
         # if new volume is under 0, set vol_new to min
         spotify.volume(volume_percent=max(vol_new, 0))
-    elif k == Key.backspace:  # DEL: set volume to 10
-        spotify.volume(volume_percent=10)
+    elif k == Key.backspace:  # DEL: set volume to PREFERRED_VOLUME
+        spotify.volume(volume_percent=PREFERRED_VOLUME)
     elif k == char('*'):  # *: ensure device
         ensure_device()
     elif k == char('0'):  # 0: disable shuffle
@@ -100,6 +115,8 @@ def on_press_try(k):
         spotify.repeat(state='off')
     elif k == char('.'):  # .: repeat track on
         spotify.repeat(state='track')
+    elif k == char('/'):  # /: switch playlist from dictionary
+        select_playlist = True
 
 
 keyboard_listener = KeyboardListener(on_press=on_press)
