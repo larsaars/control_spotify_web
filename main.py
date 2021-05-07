@@ -1,4 +1,5 @@
 import os
+import random
 from time import sleep
 
 from config import *
@@ -11,6 +12,10 @@ select_playlist = False
 
 
 # utility functions
+def ceildiv(a, b):
+    return -(-a // b)
+
+
 def cur_volume() -> int:
     return int(spotify.current_playback()['device']['volume_percent'])
 
@@ -38,6 +43,42 @@ def on_press(k):
         on_press_try(k)
     except Exception as e:
         print(e)
+
+
+# start playback of favourites list as liked songs is not treated as playlist
+def start_favourites_playback(shuffle: bool):
+    # this list will contain all liked songs ids
+    liked_songs = []
+    # if is shuffling, read out all songs and shuffle this list,
+    # then transmit 50 first items of shuffled list
+    if shuffle:
+        # read out liked songs
+
+        # get number of liked songs
+        num_of_favs = int(spotify.current_user_saved_tracks(limit=1)['total']) + 1
+        # with offset of 20, run this many times
+        # loop through them and get offset
+        for i in range(ceildiv(num_of_favs, 20)):
+            tracks_obj = spotify.current_user_saved_tracks(limit=20, offset=(i * 20))
+            # loop through items list
+            for track_item in tracks_obj['items']:
+                track_id = track_item['track']['id']
+                liked_songs.append('spotify:track:' + track_id)
+
+        # shuffle list
+        random.shuffle(liked_songs)
+
+        # play first 50 of these songs (limit)
+        spotify.start_playback(uris=liked_songs[:50])
+    else:
+        # just read out first 50 songs of fav list, prepare links
+        # and play them
+        for track_item in spotify.current_user_saved_tracks(limit=50)['items']:
+            track_id = track_item['track']['id']
+            liked_songs.append('spotify:track:' + track_id)
+
+        # start playing liked songs
+        spotify.start_playback(uris=liked_songs)
 
 
 # ensure PREFERRED_DEV_NAME is connected
@@ -73,7 +114,12 @@ def on_press_try(k):
         playlist_url = PLAYLIST_URLS.get(str(k).strip('\''), 'none')
         # if this is a valid key in the dict, play the playlist
         if playlist_url != 'none':
-            spotify.start_playback(context_uri=playlist_url)
+            if playlist_url == 'favs_def':
+                start_favourites_playback(False)
+            elif playlist_url == 'favs_shuffle':
+                start_favourites_playback(True)
+            else:
+                spotify.start_playback(context_uri=playlist_url)
         return
 
     if k == char('q'):  # q: quit process

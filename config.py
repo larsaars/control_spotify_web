@@ -18,6 +18,8 @@ or the format of a spotify url: ex.: "spotify:playlist:PLAYLIST_ID"
 """
 
 PLAYLIST_URLS = {
-    '1': 'spotify:collection:tracks',  # favourite list
-    '2': 'https://open.spotify.com/playlist/022hSssDIUrggKAI27F7ms'
+    '1': 'favs_def',  # liked songs also, not shuffled (50 first songs)
+    '2': 'favs_shuffle',  # favourite list, shuffled (50 random songs)
+    # other playlists here
+    '3': 'https://open.spotify.com/playlist/022hSssDIUrggKAI27F7ms'
 }
