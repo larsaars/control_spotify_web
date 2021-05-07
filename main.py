@@ -124,6 +124,8 @@ def on_press_try(k):
         select_playlist = False
         # get the playlist from dict
         playlist_url = PLAYLIST_URLS.get(str(k).strip('\''), 'none')
+        print()
+        print(str(k).strip('\''))
         # if this is a valid key in the dict, play the playlist
         if playlist_url != 'none':
             if playlist_url == 'favs_def':
