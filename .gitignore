@@ -1,4 +1,5 @@
 spotify_secrets.txt
+sudo_pwd.txt
 /venv/
 /.idea/
 .cache

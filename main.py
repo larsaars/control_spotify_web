@@ -7,6 +7,8 @@ from login_spotify import spotify
 from pynput.keyboard import Listener as KeyboardListener
 from pynput.keyboard import KeyCode, Key
 
+from restart_raspotify import restart_rapotify_service
+
 # variables
 select_playlist = False
 
@@ -87,6 +89,7 @@ def ensure_device():
     # there are no active or inactive devices
     # so restart raspotify service
     if len(devices) == 0:
+        restart_rapotify_service()
         os.system('sudo systemctl restart raspotify.service')
         # then wait some seconds
         sleep(3)
@@ -98,7 +101,10 @@ def ensure_device():
             break
 
     if pref_dev is not None:
+        # start playback
         spotify.transfer_playback(device_id=pref_dev, force_play=True)
+        # set volume to preferred volume
+        spotify.volume(volume_percent=PREFERRED_VOLUME)
 
 
 # play album of currently playing song
