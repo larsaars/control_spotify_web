@@ -9,7 +9,7 @@ Control spotify playback via web api and by receiving specific key strokes from 
 * if you use raspotify:
  * create file `sudo_pwd.txt` and put there your sudo password
 * `pip3 install -r requirements.txt`
-* `python3 main.py` (make sure to run with elevated permissions if has to restart raspotify service!)
+* `python3 main.py`
 
 ## shortcuts
 shortcut | behaviour
