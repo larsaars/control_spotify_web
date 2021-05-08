@@ -44,7 +44,10 @@ def on_press(k):
     try:
         on_press_try(k)
     except Exception as e:
+        # print the error
         print(e)
+        # try ensure device
+        try_ensure_device()
 
 
 # start playback of favourites list as liked songs is not treated as playlist
@@ -105,6 +108,14 @@ def ensure_device():
         spotify.transfer_playback(device_id=pref_dev, force_play=True)
         # set volume to preferred volume
         spotify.volume(volume_percent=PREFERRED_VOLUME)
+
+
+# execute this method with try catch
+def try_ensure_device():
+    try:
+        ensure_device()
+    except Exception as e:
+        print('ensuring device failed: ', e)
 
 
 # play album of currently playing song
@@ -180,7 +191,7 @@ def on_press_try(k):
     elif k == Key.backspace:  # DEL: set volume to PREFERRED_VOLUME
         spotify.volume(volume_percent=PREFERRED_VOLUME)
     elif k == char('*'):  # *: ensure preferred device is connected and playing
-        ensure_device()
+        try_ensure_device()
     elif k == char('0'):  # 0: disable shuffle
         spotify.shuffle(state=False)
     elif k == char('1'):  # 1: enable shuffle
