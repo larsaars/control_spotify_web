@@ -2,7 +2,7 @@
 PERMISSION_SCOPE = 'user-read-currently-playing user-modify-playback-state user-read-playback-state user-library-read'
 
 # the standard volume
-PREFERRED_VOLUME = 11
+PREFERRED_VOLUME = 13
 # name of standard playing spotify connect device
 PREFERRED_DEV_NAME = '237'
 
