@@ -6,6 +6,8 @@ Control spotify playback via web api and by receiving specific key strokes from 
   * create file `spotify_secrets.txt`
   * create spotify dev account (need premium) and create app [here](https://developer.spotify.com/dashboard/login)
   * in app spotify app, go to edit settings > redirect uris > paste: `http://localhost:8888/callback` > click add > save
+* if you use raspotify:
+ * create file `sudo_pwd.txt` and put there your sudo password
 * `pip3 install -r requirements.txt`
 * `python3 main.py` (make sure to run with elevated permissions if has to restart raspotify service!)
 
