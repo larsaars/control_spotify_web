@@ -14,7 +14,7 @@ Control spotify playback via web api and by receiving specific key strokes from 
   * [create](https://openweathermap.org/api) an openweathermap api key
   * create file named `owm_api_key.txt` and paste key there
 * `pip3 install -r requirements.txt`
-* `python3 main.py` (make sure to run with elevated permissions if has to restart raspotify service!)
+* `python3 main.py`
 
 ## shortcuts
 shortcut | behaviour
