@@ -166,6 +166,12 @@ def on_press_try(k):
             say_weather_now()
         elif k == char('8'):
             say_sunrise_set()
+        elif k == char('1'):
+            say_weather_tomorrow_short()
+        elif k == char('2'):
+            say_weather_tomorrow_extra()
+        elif k == char('3'):
+            say_weather_next_days()
 
         return
 
