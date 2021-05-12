@@ -34,17 +34,26 @@ SPACE | disable repeat
 . or , | enable repeat track
 \* | ensure preferred device is connected
 / | switch to start playlist mode
+7 | say weather
 
 ## switch playlist mode shortcuts
 After pressing `/` and pressing one of the buttons in the table has the defined behaviour.
 
 shortcut | behaviour
 --- | ---
-/ | play first songs from liked songs (max. 50 songs[^1])
-\* | shuffle liked songs (max. 50 songs[^1])
+/ | play first songs from liked songs (max. 50 songs)
+\* | shuffle liked songs (max. 50 songs)
 \+ | play the album of current song
 \- | play more of the artist of current song
 OTHER | all other keys are defined in config.py file and can be set to other playlists, albums, tracks etc.
 
+## say weather mode shortcuts
+After pressing `7` and pressing one of the buttons in the table has the defined behaviour.
 
-[^1]: 50 songs are the limit in since the liked songs list is not treated as a playlist by Spotify, and the API can only receive 50 song uris.
+shortcut | behaviour
+--- | ---
+7 | say current weather
+8 | say sunrise and sunset today
+1 | say weather tomorrow (short version)
+2 | say weather next 24 hours (every 3 hrs)
+3 | say weather at midday next 5 days
