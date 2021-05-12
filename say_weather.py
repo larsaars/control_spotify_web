@@ -23,7 +23,7 @@ def get_time(timestamp) -> str:
 
 # say sth via tts
 def say(inp: str):
-    cmd = 'espeak -ven+f6 -k5 -s150 -a %s --punct="<characters>" "%s" 2 >> /dev/null' % ('21', inp)
+    cmd = 'espeak -ven+f6 -k5 -s150 -s94-a %s --punct="<characters>" "%s" 2 >> /dev/null' % ('21', inp)
     execute_unix(cmd)
 
 
