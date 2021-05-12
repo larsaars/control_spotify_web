@@ -8,6 +8,7 @@ from pynput.keyboard import Listener as KeyboardListener
 from pynput.keyboard import KeyCode, Key
 
 from restart_raspotify import restart_rapotify_service
+from say_weather import *
 
 # variables
 select_playlist, select_weather = False, False
@@ -155,6 +156,17 @@ def on_press_try(k):
                 play_artist_current_track()
             else:
                 spotify.start_playback(context_uri=playlist_url)
+        return
+
+    # if select weather
+    if select_weather:
+        select_weather = False
+
+        if k == char('7'):
+            say_weather_now()
+        elif k == char('8'):
+            say_sunrise_set()
+
         return
 
     if k == char('q'):  # q: quit process

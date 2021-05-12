@@ -5,6 +5,10 @@ PERMISSION_SCOPE = 'user-read-currently-playing user-modify-playback-state user-
 PREFERRED_VOLUME = 13
 # name of standard playing spotify connect device
 PREFERRED_DEV_NAME = '237'
+# name of city you live in
+CITY_NAME = 'Regensburg'
+# your language
+LANGUAGE = 'EN'
 
 # dict with all urls to key press and playlist after pressing playlist select button ('/')
 
