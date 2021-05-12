@@ -1,5 +1,6 @@
 spotify_secrets.txt
 sudo_pwd.txt
+owm_api_key.txt
 /venv/
 /.idea/
 .cache

@@ -10,7 +10,7 @@ from pynput.keyboard import KeyCode, Key
 from restart_raspotify import restart_rapotify_service
 
 # variables
-select_playlist = False
+select_playlist, select_weather = False, False
 
 
 # utility functions
@@ -134,7 +134,7 @@ def play_artist_current_track():
 
 # actions on key presses
 def on_press_try(k):
-    global select_playlist
+    global select_playlist, select_weather
 
     # print('\n', k)
 
@@ -206,6 +206,8 @@ def on_press_try(k):
         spotify.repeat(state='track')
     elif k == char('/'):  # /: switch playlist from dictionary
         select_playlist = True
+    elif k == char('7'):  # 7: switch weather statement (tell weather)
+        select_weather = True
 
 
 keyboard_listener = KeyboardListener(on_press=on_press)
