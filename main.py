@@ -1,5 +1,6 @@
 import os
 import random
+import traceback
 from time import sleep
 
 from config import *
@@ -44,9 +45,9 @@ def is_playing() -> bool:
 def on_press(k):
     try:
         on_press_try(k)
-    except Exception as e:
+    except Exception:
         # print the error
-        print(e)
+        traceback.print_exc()
         # try ensure device
         try_ensure_device()
 
@@ -228,7 +229,8 @@ def on_press_try(k):
         select_weather = True
 
 
-keyboard_listener = KeyboardListener(on_press=on_press)
-# start listening and join thread
-keyboard_listener.start()
-keyboard_listener.join()
+if __name__ == '__main__':
+    keyboard_listener = KeyboardListener(on_press=on_press)
+    # start listening and join thread
+    keyboard_listener.start()
+    keyboard_listener.join()
