@@ -1,13 +1,12 @@
 import os
 import random
 import traceback
+from pynput.keyboard import KeyCode, Key
+from pynput.keyboard import Listener as KeyboardListener
 from time import sleep
 
 from config import *
 from login_spotify import spotify
-from pynput.keyboard import Listener as KeyboardListener
-from pynput.keyboard import KeyCode, Key
-
 from restart_raspotify import restart_rapotify_service
 from say_weather import *
 
@@ -230,6 +229,7 @@ def on_press_try(k):
 
 
 if __name__ == '__main__':
+    # init the keyboard listener
     keyboard_listener = KeyboardListener(on_press=on_press)
     # start listening and join thread
     keyboard_listener.start()

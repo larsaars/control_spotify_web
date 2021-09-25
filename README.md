@@ -1,22 +1,27 @@
 # control spotify web rpi
-Control spotify playback via web api and by receiving specific key strokes from keyboard (using a raspberry pi, assuming usage of raspotify).
+
+Control spotify playback via web api and by receiving specific key strokes from keyboard (using a raspberry pi, assuming
+usage of raspotify).
 
 ## install on linux
+
 * spotify secrets
-  * create file `spotify_secrets.txt`
-  * create spotify dev account (need premium) and create app [here](https://developer.spotify.com/dashboard/login)
-  * in app spotify app, go to edit settings > redirect uris > paste: `http://localhost:8888/callback` > click add > save
-  
+    * create file `spotify_secrets.txt`
+    * create spotify dev account (need premium) and create app [here](https://developer.spotify.com/dashboard/login)
+    * in app spotify app, go to edit settings > redirect uris > paste: `http://localhost:8888/callback` > click add >
+      save
+
 * if you use raspotify:
- * create file `sudo_pwd.txt` and put there your sudo password 
-   
+* create file `sudo_pwd.txt` and put there your sudo password
+
 * if you want to be able to hear current weather:
-  * [create](https://openweathermap.org/api) an openweathermap api key
-  * create file named `owm_api_key.txt` and paste key there
+    * [create](https://openweathermap.org/api) an openweathermap api key
+    * create file named `owm_api_key.txt` and paste key there
 * `pip3 install -r requirements.txt`
 * `python3 main.py`
 
 ## shortcuts
+
 shortcut | behaviour
 --- | ---
 q | quit process
@@ -37,6 +42,7 @@ SPACE | disable repeat
 7 | say weather
 
 ## switch playlist mode shortcuts
+
 After pressing `/` and pressing one of the buttons in the table has the defined behaviour.
 
 shortcut | behaviour
@@ -48,6 +54,7 @@ shortcut | behaviour
 OTHER | all other keys are defined in config.py file and can be set to other playlists, albums, tracks etc.
 
 ## say weather mode shortcuts
+
 After pressing `7` and pressing one of the buttons in the table has the defined behaviour.
 
 shortcut | behaviour

@@ -1,7 +1,7 @@
 import os
-
 import spotipy
 from spotipy import SpotifyOAuth
+
 from config import PERMISSION_SCOPE
 
 # read the credentials

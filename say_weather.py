@@ -1,7 +1,6 @@
+import requests
 import subprocess
 from datetime import datetime
-
-import requests
 
 from config import CITY_NAME, LANGUAGE
 
