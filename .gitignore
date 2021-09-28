@@ -5,3 +5,4 @@ owm_api_key.txt
 /.idea/
 .cache
 /__pycache__/
+*.pyc
