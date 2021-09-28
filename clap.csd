@@ -54,7 +54,7 @@ def ensure_device():
     pref_dev = None
     for device in devices:
         if device['name'] == PREFERRED_DEV_NAME:
-	    pref_dev = device['id']
+            pref_dev = device['id']
             break
 
     if pref_dev is not None:
@@ -69,7 +69,7 @@ def try_ensure_device():
     try:
         ensure_device()
     except Exception as e:
-	pass
+        pass
 
 
 # gets called when clap has been detected
@@ -118,8 +118,8 @@ kRms rms aNorm
 kRmsDiff = kRms - kLastRms
 
 if (kRmsDiff > iRmsDiffThreshold && kTime - kLastAttack > 0.09) then
-	kLastAttack times
-	pycall "clap_detected", kLastAttack
+        kLastAttack times
+        pycall "clap_detected", kLastAttack
 endif
 
 out aNorm
