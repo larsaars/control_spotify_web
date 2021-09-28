@@ -18,10 +18,21 @@ instr 1
 
 pyruni {{
 
-import os, sys
+# import and add path
+import os, sys, traceback
 sys.path.append(os.getcwd())
+from login_spotify import spotify
 
+# the time of the last clap (to remember)
 before = 0
+
+# bool to determine if music is playing
+def is_playing() -> bool:
+    playback = spotify.current_playback()
+    if playback is None:
+        return False
+    else:
+        return playback['is_playing'] 
 
 # gets called when clap has been detected
 def clap_detected(now: int):
@@ -33,8 +44,18 @@ def clap_detected(now: int):
     # if the difference is less than 0.4 it is a fast double clap and given code will be executed
     # in this case spotify play / pause
     if diff < 0.4:
-        print('double clap!')
-    
+        print('double clap detected!')
+
+        # check boolean, if is playing, enable playback, if not, disable playback
+        # wrap in try catch
+        try:
+            if is_playing():
+                spotify.pause_playback()
+            else:
+                spotify.start_playback()
+        except Exception: 
+            traceback.print_exc()
+
     # set the before clap as now time
     before = now
 
