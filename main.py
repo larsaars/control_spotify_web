@@ -10,9 +10,6 @@ from spotify_tools import *
 select_playlist, select_weather = False, False
 
 
-
-
-
 def char(key_code: str):
     return KeyCode.from_char(key_code)
 

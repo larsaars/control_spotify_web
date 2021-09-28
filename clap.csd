@@ -23,54 +23,10 @@ import os, sys, traceback
 sys.path.append(os.getcwd())
 print(sys.version)
 
-from login_spotify import spotify
-from config import *
+from spotify_tools import *
 
 # the time of the last clap (to remember)
 before = 0
-
-# bool to determine if music is playing
-def is_playing():
-    playback = spotify.current_playback()
-    if playback is None:
-        return False
-    else:
-        return playback['is_playing'] 
-
-
-# ensure PREFERRED_DEV_NAME is connected and playing
-def ensure_device():
-    # list number of devices
-    devices = spotify.devices()['devices']
-
-    # there are no active or inactive devices
-    # so restart raspotify service
-    if len(devices) == 0:
-        restart_rapotify_service()
-        os.system('sudo systemctl restart raspotify.service')
-        # then wait some seconds
-        sleep(3)
-
-    pref_dev = None
-    for device in devices:
-        if device['name'] == PREFERRED_DEV_NAME:
-            pref_dev = device['id']
-            break
-
-    if pref_dev is not None:
-        # start playback
-        spotify.transfer_playback(device_id=pref_dev, force_play=True)
-        # set volume to preferred volume
-        spotify.volume(volume_percent=PREFERRED_VOLUME)
-
-
-# execute this method with try catch
-def try_ensure_device():
-    try:
-        ensure_device()
-    except Exception as e:
-        pass
-
 
 # gets called when clap has been detected
 def clap_detected(now):
