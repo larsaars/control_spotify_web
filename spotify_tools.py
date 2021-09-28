@@ -11,15 +11,15 @@ def ceildiv(a, b):
     return -(-a // b)
 
 
-def cur_volume() -> int:
+def cur_volume():
     return int(spotify.current_playback()['device']['volume_percent'])
 
 
-def cur_ms() -> int:
+def cur_ms():
     return int(spotify.current_playback()['progress_ms'])
 
 
-def is_playing() -> bool:
+def is_playing():
     playback = spotify.current_playback()
     if playback is None:
         return False
@@ -28,7 +28,7 @@ def is_playing() -> bool:
 
 
 # start playback of favourites list as liked songs is not treated as playlist
-def start_favourites_playback(shuffle: bool):
+def start_favourites_playback(shuffle):
     # this list will contain all liked songs ids
     liked_songs = []
     # if is shuffling, read out all songs and shuffle this list,
