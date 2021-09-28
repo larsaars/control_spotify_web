@@ -4,3 +4,4 @@ owm_api_key.txt
 /venv/
 /.idea/
 .cache
+/__pycache__/
