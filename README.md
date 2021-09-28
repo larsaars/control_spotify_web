@@ -21,7 +21,7 @@ usage of raspotify).
 * `python3 main.py` 
 * install csound to use clap mechanism `sudo apt install csound`
     * for usage, plug in microphone to rpi and via ssh (for example), start a new tmux session: `tmux new -s clap_detect` 
-    * then start csound file via `csound clap.csd`
+    * then start csound file via `python keep_clap_csd_awake.py`
     * and detach tmux session via `ctrl+d+d`
     * to attach again, enter `tmux attach -t clap_detect`
 

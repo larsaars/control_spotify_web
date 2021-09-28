@@ -1,4 +1,4 @@
-# inspired by : https://github.com/iver56/clap-detection
+; inspired by : https://github.com/iver56/clap-detection
 
 <CsoundSynthesizer>
 <CsOptions>
@@ -34,6 +34,8 @@ def clap_detected(now):
     global before 
     # calculate the time difference from the last clap
     diff = now - before
+
+    print('clap', diff)
 
     # if the difference is less than 0.4 it is a fast double clap and given code will be executed
     # in this case spotify play / pause
