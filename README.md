@@ -18,7 +18,12 @@ usage of raspotify).
     * [create](https://openweathermap.org/api) an openweathermap api key
     * create file named `owm_api_key.txt` and paste key there
 * `pip3 install -r requirements.txt`
-* `python3 main.py`
+* `python3 main.py` 
+* install csound to use clap mechanism `sudo apt install csound`
+    * for usage, plug in microphone to rpi and via ssh (for example), start a new tmux session: `tmux new -s clap_detect` 
+    * then start csound file via `csound clap.csd`
+    * and detach tmux session via `ctrl+d+d`
+    * to attach again, enter `tmux attach -t clap_detect`
 
 ## shortcuts
 
