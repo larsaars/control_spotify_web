@@ -26,7 +26,7 @@ print(sys.version)
 from spotify_tools import *
 
 # the time of the last clap (to remember)
-before = 0
+before = 0, sumOfClaps = 1
 
 # gets called when clap has been detected
 def clap_detected(now):
@@ -39,17 +39,27 @@ def clap_detected(now):
 
     # if the difference is less than 0.4 it is a fast double clap and given code will be executed
     # in this case spotify play / pause
-    if diff < CLAP_TIME_DIFF: 
-        # check boolean, if is playing, enable playback, if not, disable playback
-        # wrap in try catch
-        try:
-            if is_playing():
-                spotify.pause_playback()
-            else:
-                spotify.start_playback()
-        except Exception:
-            try_ensure_device()
-            traceback.print_exc()
+    if diff < CLAP_TIME_DIFF:
+        # the sum of claps is plus one
+        sumOfClaps += 1
+        # if two claps, play pause
+        if sumOfClaps == 2:
+            # check boolean, if is playing, enable playback, if not, disable playback
+            # wrap in try catch
+            try:
+                if is_playing():
+                    spotify.pause_playback()
+                else:
+                    spotify.start_playback()
+            except Exception:
+                try_ensure_device()
+                traceback.print_exc()
+        elif sumOfClaps == 3:
+            spotify.next_track()
+        elif sumOfClaps == 4:
+            spotify.previous_track()
+    else:
+        sumOfClaps = 1
 
     # set the before clap as now time
     before = now
