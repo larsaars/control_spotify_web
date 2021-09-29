@@ -26,12 +26,13 @@ print(sys.version)
 from spotify_tools import *
 
 # the time of the last clap (to remember)
-before = 0, sumOfClaps = 1
+before = 0
+sumOfClaps = 1
 
 # gets called when clap has been detected
 def clap_detected(now):
     # set global variable is accessed
-    global before 
+    global before, sumOfClaps
     # calculate the time difference from the last clap
     diff = now - before
 
@@ -57,7 +58,7 @@ def clap_detected(now):
         elif sumOfClaps == 3:
             spotify.next_track()
         elif sumOfClaps == 4:
-            spotify.previous_track()
+            start_favourites_playback(True)
     else:
         sumOfClaps = 1
 
