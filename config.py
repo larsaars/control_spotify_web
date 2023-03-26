@@ -6,7 +6,7 @@ PREFERRED_VOLUME = 13
 # the clap time difference
 CLAP_TIME_DIFF = 0.33
 # name of standard playing spotify connect device
-PREFERRED_DEV_NAME = '237'
+PREFERRED_DEV_NAME = 'Lars'
 # name of city you live in
 CITY_NAME = 'Regensburg'
 # your language
