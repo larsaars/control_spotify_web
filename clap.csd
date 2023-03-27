@@ -55,10 +55,15 @@ def clap_detected(now):
             except Exception:
                 try_ensure_device()
                 traceback.print_exc()
+
+                sleep(3)
+
+                try:
+                    spotify.start_playback()
+                except:
+                    pass
         elif sumOfClaps == 3:
             spotify.next_track()
-        elif sumOfClaps == 4:
-            start_favourites_playback(True)
     else:
         sumOfClaps = 1
 
