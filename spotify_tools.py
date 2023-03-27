@@ -72,7 +72,7 @@ def ensure_device():
         restart_rapotify_service()
         os.system('sudo systemctl restart raspotify.service')
         # then wait some seconds
-        sleep(9.5)
+        sleep(8)
 
     pref_dev = None
     for device in devices:

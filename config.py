@@ -2,7 +2,7 @@
 PERMISSION_SCOPE = 'user-read-currently-playing user-modify-playback-state user-read-playback-state user-library-read'
 
 # the standard volume
-PREFERRED_VOLUME = 13
+PREFERRED_VOLUME = 100
 # the clap time difference
 CLAP_TIME_DIFF = 0.33
 # name of standard playing spotify connect device
