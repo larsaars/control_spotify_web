@@ -53,15 +53,9 @@ def clap_detected(now):
                 else:
                     spotify.start_playback()
             except Exception:
+                print('device is not active anymore, trying to set it active again and to start playback')
                 try_ensure_device()
-                traceback.print_exc()
 
-                sleep(3)
-
-                try:
-                    spotify.start_playback()
-                except:
-                    pass
         elif sumOfClaps == 3:
             spotify.next_track()
     else:
