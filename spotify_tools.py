@@ -85,6 +85,10 @@ def ensure_device():
         spotify.transfer_playback(device_id=pref_dev, force_play=True)
         # set volume to preferred volume
         spotify.volume(volume_percent=PREFERRED_VOLUME)
+        # be sure that there is something to be played, shuffle favourites
+        start_favourites_playback(shuffle=True)
+    else:
+        print('no preferred device found')
 
 
 # execute this method with try catch
