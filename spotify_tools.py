@@ -84,7 +84,6 @@ def ensure_device():
         # start playback
         spotify.transfer_playback(device_id=pref_dev, force_play=True)
         # set volume to preferred volume
-<<<<<<< HEAD
         spotify.volume(volume_percent=PREFERRED_VOLUME, device_id=pref_dev)
         # be sure to enable shuffling
         spotify.shuffle(True, device_id=pref_dev)
@@ -94,14 +93,8 @@ def ensure_device():
             print('starting playlist playback')
             playlist_uri = 'https://open.spotify.com/playlist/25BINn4b9lSfdo3PdGa8pZ'
             spotify.start_playback(device_id=pref_dev, context_uri=playlist_uri)
-
-=======
-        spotify.volume(volume_percent=PREFERRED_VOLUME)
-        # make sure there's a playback (by defining a playlist)
-        spotify.start_playback(context_uri='https://open.spotify.com/playlist/2xGIJmGOGjXjgNZvaDz5MI')  # (playlist is favourites of favourites)
     else:
         print('no preferred device found')
->>>>>>> 25f3ecf032ac962a9676114c7c2103236a162e8e
 
 
 # execute this method with try catch
