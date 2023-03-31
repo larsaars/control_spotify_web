@@ -29,6 +29,8 @@ from spotify_tools import *
 before = 0
 sumOfClaps = 1
 
+print('initialization of python')
+
 # gets called when clap has been detected
 def clap_detected(now):
     # set global variable is accessed
@@ -47,16 +49,20 @@ def clap_detected(now):
         if sumOfClaps == 2:
             # check boolean, if is playing, enable playback, if not, disable playback
             # wrap in try catch
+            print('change playback state')
             try:
                 if is_playing():
+                    print('trying to pause playback')
                     spotify.pause_playback()
                 else:
+                    print('trying to start playback')
                     spotify.start_playback()
             except Exception:
                 print('device is not active anymore, trying to set it active again and to start playback')
                 try_ensure_device()
 
         elif sumOfClaps == 3:
+            print('try to play next track')
             spotify.next_track()
     else:
         sumOfClaps = 1

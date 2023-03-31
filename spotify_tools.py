@@ -70,7 +70,6 @@ def ensure_device():
     # so restart raspotify service
     if len(devices) == 0:
         restart_rapotify_service()
-        os.system('sudo systemctl restart raspotify.service')
         # then wait some seconds
         sleep(8)
 
@@ -81,10 +80,20 @@ def ensure_device():
             break
 
     if pref_dev is not None:
+        print('transferring...')
         # start playback
         spotify.transfer_playback(device_id=pref_dev, force_play=True)
         # set volume to preferred volume
-        spotify.volume(volume_percent=PREFERRED_VOLUME)
+        spotify.volume(volume_percent=PREFERRED_VOLUME, device_id=pref_dev)
+        # be sure to enable shuffling
+        spotify.shuffle(True, device_id=pref_dev)
+        # start forcing a specific playlist if is still not knowing what to play after force_play=True
+        if not is_playing():
+            # start specific playlist so that it won't stay paused
+            print('starting playlist playback')
+            playlist_uri = 'https://open.spotify.com/playlist/25BINn4b9lSfdo3PdGa8pZ'
+            spotify.start_playback(device_id=pref_dev, context_uri=playlist_uri)
+
 
 
 # execute this method with try catch
