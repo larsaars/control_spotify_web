@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """
 I had the problem that the command csound clap.csd exits after 500s,
 so i wrote this script so that it runs without pause
