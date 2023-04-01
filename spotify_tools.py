@@ -71,7 +71,7 @@ def ensure_device():
     if len(devices) == 0:
         restart_rapotify_service()
         # then wait some seconds
-        sleep(8)
+        sleep(3)
 
     pref_dev = None
     for device in devices:
