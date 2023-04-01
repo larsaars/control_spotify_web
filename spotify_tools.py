@@ -4,7 +4,7 @@ from time import sleep
 
 from config import *
 from login_spotify import spotify
-from restart_raspotify import restart_rapotify_service
+from restart_raspotify import restart_raspotify_service
 
 
 def ceildiv(a, b):
@@ -69,7 +69,7 @@ def ensure_device():
     # there are no active or inactive devices
     # so restart raspotify service
     if len(devices) == 0:
-        restart_rapotify_service()
+        restart_raspotify_service()
         # then wait some seconds
         sleep(3)
 
