@@ -87,6 +87,8 @@ def ensure_device():
         spotify.volume(volume_percent=PREFERRED_VOLUME, device_id=pref_dev)
         # be sure to enable shuffling
         spotify.shuffle(True, device_id=pref_dev)
+        # again, here wait some seconds, it takes some time (async) to transfer playback possibly
+        sleep(1.5)
         # start forcing a specific playlist if is still not knowing what to play after force_play=True
         if not is_playing():
             # start specific playlist so that it won't stay paused
