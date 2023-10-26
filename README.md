@@ -69,3 +69,8 @@ shortcut | behaviour
 1 | say weather tomorrow (short version)
 2 | say weather next 24 hours (every 3 hrs)
 3 | say weather at midday next 5 days
+
+## helpful links
+
+[RPI audio receiver](https://github.com/nicokaiser/rpi-audio-receiver) bt and raspotify
+
